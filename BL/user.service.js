@@ -1,6 +1,3 @@
-require('dotenv').config()
-require('../DL/db').connect()
-
 const userDL = require('../DL/user.controller')
 
 async function createNewUser(data) {
@@ -14,12 +11,15 @@ async function createNewUser(data) {
     console.log(await userDL.create(data))
 }
 
-let newUser = {
-    fullName: 'liron haim',
-    // email: 'Avi@Levi.com',
-    email: 'liron@gmail.com',
-    password: '98372jhxz',
+async function getAllUsers(){
+    return await userDL.read({})
+} 
 
-}
+// let newUser = {
+//     fullName: 'liron haim',
+//     // email: 'Avi@Levi.com',
+//     email: 'liron@gmail.com',
+//     password: '98372jhxz',
 
-createNewUser(newUser)
+// }
+module.exports = {createNewUser,getAllUsers }

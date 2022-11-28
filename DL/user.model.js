@@ -1,34 +1,39 @@
 const mongoose = require("mongoose");
+const {orderSchema} =require('./order.model')
 
 const userSchema = new mongoose.Schema({
-    fName : {
+
+    // fName , lName  
+    // -- permission
+    fullName: {
         type: String
     },
-    lName : {
-        type: String
-    },
-    displayName : {
-        type: String
-    },
-    email : {
+    email: {
         type: String,
-        require : true,
+        require: true,
         unique: true
     },
-    password : {
+    password: {
         type: String,
-        require : true,
-        select : false
+        require: true,
+        Select: false
     },
-    createDate : {
+   orders : [orderSchema],
+    createDate: {
         type: Date,
         default: Date.now
+
     },
-    isActive : {
+
+    isActive: {
         type: Boolean,
         default: true
-    }
+    },
+
 })
 
-const userData = mongoose.model('user',userSchema);
+
+
+
+const userData =mongoose.model('user',userSchema);
 module.exports = {userData};
