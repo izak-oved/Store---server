@@ -2,7 +2,6 @@ require('dotenv').config()
 
 const express = require("express")
 const cors = require("cors")
-const { createNewOrder } = require('./BL/order.service')
 const app = express()
 
 app.use(cors())

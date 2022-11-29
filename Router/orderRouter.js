@@ -7,6 +7,7 @@ const orderService=require("../BL/order.service")
 
 router.post("/", async (req, res) => {
     try {
+        console.log(req.body);
         let result =await orderService.createNewOrder(req.body)
         console.log(result);
         res.status(201).send(result)
