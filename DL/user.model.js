@@ -2,10 +2,12 @@ const mongoose = require("mongoose");
 const {orderSchema} =require('./order.model')
 
 const userSchema = new mongoose.Schema({
-
-    // fName , lName  
-    // -- permission
-    fullName: {
+ 
+   
+    fName: {
+        type: String
+    },
+    lName: {
         type: String
     },
     email: {
@@ -18,7 +20,10 @@ const userSchema = new mongoose.Schema({
         require: true,
         Select: false
     },
-   orders : [orderSchema],
+   orders : [{
+    type : mongoose.SchemaTypes.ObjectId,
+    ref : 'order'
+   }],
     createDate: {
         type: Date,
         default: Date.now

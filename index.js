@@ -2,6 +2,7 @@ require('dotenv').config()
 
 const express = require("express")
 const cors = require("cors")
+const { createNewOrder } = require('./BL/order.service')
 const app = express()
 
 app.use(cors())
@@ -13,7 +14,9 @@ PORT = process.env.PORT || 5000
 require("./DL/db").connect()
 
 app.use("/api/user",require("./Router/userRouter"))
+app.use("/api/order",require("./Router/orderRouter"))
 
 
 
 app.listen(PORT, () => console.log(`Server is running at Port ${PORT}`))
+

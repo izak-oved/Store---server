@@ -6,12 +6,13 @@ const orderSchema = new mongoose.Schema({
         type: mongoose.SchemaTypes.ObjectId, 
         ref: 'user'
     },
-    // total 
+     
     total: { type: Number },
+
     cart: [{
-        itemId: { type: String },
-        count: { type: Number },
-        price: { type: Number },
+        itemId: { type: String,require: false },
+        count: { type: Number,require: false },
+        price: { type: Number ,require: false },
     }],
 
     status: {
@@ -31,8 +32,6 @@ const orderSchema = new mongoose.Schema({
     },
 
 })
-
-
 
 
 const orderData = mongoose.model('order', orderSchema);
