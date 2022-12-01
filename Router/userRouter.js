@@ -3,8 +3,10 @@ const userController = require("../BL/user.service")
 const router = express.Router()
 
 //read user | GET
+
 router.get("/", async (req, res) => {
     try {
+        
         let result = await userController.getUsers({})
         res.send(result)
     } catch (error) {
@@ -30,7 +32,20 @@ router.get("/:id/orders", async (req, res) => {
 //create user | POST
 router.post("/", async (req, res) => {
     try {
+        console.log(req.body);
         let result = await userController.createNewUser(req.body)
+        res.send(result)
+    } catch (error) {
+        res.status(401).send(error)
+    }
+})
+// Login POST
+router.post("/login", async (req, res) => {
+    try {
+        if (!req.body.password ||!req.body.email) {
+            throw {massage: "missing data!!!"}
+        }
+        let result = await userController.getUsers({email:req.body.email, password:req.body.password})
         res.send(result)
     } catch (error) {
         res.status(401).send(error)

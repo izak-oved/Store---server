@@ -2,7 +2,7 @@ const userDL = require('../DL/user.controller')
 
 async function createNewUser(data) {
     // validation fields
-    if (!data.fName || !data.lName || !data.email || !data.password) throw "missing data"
+    if ( !data.email || !data.password) throw "missing data"
 
     // if user is exist
     let user = await userDL.read({ email: data.email })

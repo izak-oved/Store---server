@@ -4,12 +4,12 @@ const {orderSchema} =require('./order.model')
 const userSchema = new mongoose.Schema({
  
    
-    fName: {
+    name: {
         type: String
     },
-    lName: {
-        type: String
-    },
+    // lName: {
+    //     type: String
+    // },
     email: {
         type: String,
         require: true,
@@ -18,6 +18,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         require: true,
+        unique: true,
         Select: false
     },
    orders : [{
