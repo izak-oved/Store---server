@@ -45,7 +45,7 @@ router.post("/login", async (req, res) => {
         if (!req.body.password ||!req.body.email) {
             throw {massage: "missing data!!!"}
         }
-        let result = await userController.getUsers({email:req.body.email, password:req.body.password})
+        let result = await userController.getUsers({email:req.body.email, password:req.body.password});
         res.send(result)
     } catch (error) {
         res.status(401).send(error)
